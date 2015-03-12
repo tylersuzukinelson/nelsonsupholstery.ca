@@ -1,0 +1,16 @@
+#gallery.carousel.slide data-ride="carousel"
+  .carousel-inner role="listbox"
+    - flag_first = true
+    - images.each do |image|
+      div class="item#{ " active" if flag_first }"
+        = image_tag image.image, alt: image.alt
+        .carousel-caption
+          h3
+            = image.title
+          em
+            = image.description
+      - flag_first = false
+  a.left.carousel-control href="#gallery" role="button" data-slide="prev"
+    span.glyphicon.glyphicon-chevron-left
+  a.right.carousel-control href="#gallery" role="button" data-slide="next"
+    span.glyphicon.glyphicon-chevron-right

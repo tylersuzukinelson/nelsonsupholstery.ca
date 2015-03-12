@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'home#index'
+  get 'contact' => 'home#contact'
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
   end

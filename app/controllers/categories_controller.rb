@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-
+    @images = @category.images.limit(10)
   end
 
   def edit

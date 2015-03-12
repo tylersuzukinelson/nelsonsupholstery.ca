@@ -1,4 +1,4 @@
 .row
   h1
-    | Nelson's Upholstery & Design
+    = @category.title
   = render partial: "/home/gallery", locals: { images: @images }
