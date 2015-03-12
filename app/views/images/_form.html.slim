@@ -1,0 +1,11 @@
+= simple_form_for image, class: "form-horizontal" do |f|
+  = f.input :title
+  = f.input :description
+  = f.input :alt
+  - Category.order(title: :asc).each do |category|
+    = check_box_tag 'image[category_ids][]', category.id
+    = category.title
+    br
+  = f.input :image
+  = token_tag form_authenticity_token
+  = f.submit "Save", class: "btn btn-default"

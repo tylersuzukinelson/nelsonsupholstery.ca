@@ -47,11 +47,7 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit('title')
-  end
-
-  def get_errors
-    @category.errors.full_messages.join('; ')
+    params.require(:category).permit(:title)
   end
 
 end

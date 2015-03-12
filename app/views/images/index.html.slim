@@ -1,0 +1,24 @@
+h1
+  | Images
+table.table.table-striped
+  thead
+    tr
+      th
+        | Image Title
+      th
+        | Description
+      th
+        | Alt Text
+      th style="text-align: right; "
+        = link_to "Add Image", new_image_path, remote: true, class: "btn btn-default"
+  tbody#images
+    - @images.each do |image|
+      = render partial: "/images/row", locals: { image: image }
+.modal.fade id="modal" tabindex="-1" role="dialog"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal"
+          | &times;
+        h4.modal-title#modal-title
+      .modal-body#modal-content
