@@ -6,13 +6,15 @@ table.table.table-striped
       th
         | Category
       th style="text-align: right; "
-        = link_to "Add Category", "", remote: true, class: "btn btn-default"
-  tbody
+        = link_to "Add Category", new_category_path, remote: true, class: "btn btn-default"
+  tbody#categories
     - @categories.each do |category|
-      tr id="#{dom_id(category)}"
-        td
-          = category.title
-        td style="text-align: right; "
-          = link_to "Edit", edit_category_path(category), remote: true, class: "btn btn-warning"
-          |  
-          = link_to "Delete", category_path(category), method: :delete, remote: true, class: "btn btn-danger"
+      = render partial: "/categories/row", locals: { category: category }
+.modal.fade id="modal" tabindex="-1" role="dialog"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal"
+          | &times;
+        h4.modal-title#modal-title
+      .modal-body#modal-content

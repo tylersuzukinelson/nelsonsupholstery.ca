@@ -4,15 +4,19 @@ class CategoriesController < ApplicationController
   before_action :get_category, only: [:show, :edit, :update, :destroy]
 
   def index
-    @categories = Category.all
+    @categories = Category.order(title: :asc)
   end
 
   def new
-
+    @category = Category.new
   end
 
   def create
-
+    @category = Category.new category_params
+    @category.save
+    respond_to do |format|
+      format.js { render }
+    end
   end
 
   def show
