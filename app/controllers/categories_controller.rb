@@ -24,11 +24,13 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
+    @category.update category_params
+    respond_to do |format|
+      format.js { render }
+    end
   end
 
   def destroy
