@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'interactive_editor'
