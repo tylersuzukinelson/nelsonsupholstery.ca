@@ -1,10 +1,10 @@
 class CategoriesController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :get_category
+  before_action :get_category, only: [:show, :edit, :update, :destroy]
 
   def index
-
+    @categories = Category.all
   end
 
   def new
