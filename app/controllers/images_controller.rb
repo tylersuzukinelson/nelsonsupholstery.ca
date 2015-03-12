@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
   before_action :get_image, only: [:edit, :update, :destroy]
   
   def index
-
+    @images = Image.order(created_at: :desc)
   end
 
   def new

@@ -1,0 +1,11 @@
+tr id="#{dom_id(image)}"
+        td
+          = image.title
+        td
+          = image.description
+        td
+          = image.alt
+        td style="text-align: right; "
+          = link_to "Edit", edit_image_path(image), remote: true, class: "btn btn-warning"
+          |  
+          = link_to "Delete", image_path(image), method: :delete, remote: true, class: "btn btn-danger"
