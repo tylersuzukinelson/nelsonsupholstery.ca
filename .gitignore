@@ -4,6 +4,7 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 upholstery_template.html
+/config/initializers/api_keys_for_aws.rb
 /config/initializers/setup_aws.rb
 
 # Ignore bundler config.
