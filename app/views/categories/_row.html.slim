@@ -1,0 +1,7 @@
+tr id="#{dom_id(category)}"
+        td
+          = category.title
+        td style="text-align: right; "
+          = link_to "Edit", edit_category_path(category), remote: true, class: "btn btn-warning"
+          |  
+          = link_to "Delete", category_path(category), method: :delete, remote: true, class: "btn btn-danger"

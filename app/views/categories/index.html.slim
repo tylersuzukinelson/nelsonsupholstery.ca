@@ -1,4 +1,20 @@
 h1
   | Categories
-
-  
+table.table.table-striped
+  thead
+    tr
+      th
+        | Category
+      th style="text-align: right; "
+        = link_to "Add Category", new_category_path, remote: true, class: "btn btn-default"
+  tbody#categories
+    - @categories.each do |category|
+      = render partial: "/categories/row", locals: { category: category }
+.modal.fade id="modal" tabindex="-1" role="dialog"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type="button" data-dismiss="modal"
+          | &times;
+        h4.modal-title#modal-title
+      .modal-body#modal-content

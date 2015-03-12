@@ -1,0 +1,19 @@
+$('#flash-messages').html('');
+$('#modal-flash-messages').html('');
+
+<% if @category.errors.any? %>
+
+  <% @category.errors.full_messages.each do |error| %>
+
+    $('#flash-messages').append('<div class="alert alert-danger"><%= error %></div>');
+
+  <% end %>
+
+<% else %>
+
+  $('#<%= dom_id(@category) %>').replaceWith('<%= j render partial: "/categories/row", locals: { category: @category } %>')
+  $('#modal-title').text('');
+  $('#modal-content').html('');
+  $('#modal').modal('hide');
+
+<% end %>

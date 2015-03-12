@@ -1,0 +1,18 @@
+$('#flash-messages').html('');
+$('#modal-flash-messages').html('');
+
+<% if @category.errors.any? %>
+
+  <% @category.errors.full_messages.each do |error| %>
+
+    $('#flash-messages').append('<div class="alert alert-danger"><%= error %></div>');
+
+  <% end %>
+
+<% else %>
+
+  $('#modal-title').text('Edit Category');
+  $('#modal-content').html('<%= j render partial: "/categories/form", locals: { category: @category } %>');
+  $('#modal').modal('show');
+
+<% end %>
