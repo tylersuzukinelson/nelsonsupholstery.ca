@@ -5,13 +5,13 @@ $('#modal-flash-messages').html('');
 
   <% @category.errors.full_messages.each do |error| %>
 
-    $('#flash-messages').append('<div class="alert alert-danger"><%= error %></div>');
+    $('#modal-flash-messages').append('<div class="alert alert-danger"><%= error %></div>');
 
   <% end %>
 
 <% else %>
 
-  $('#categories').prepend('<%= j render partial: "/categories/row", locals: { category: @category } %>')
+  $('#categories').prepend('<%= j render partial: "/categories/row", locals: { category: @category } %>');
   $('#modal-title').text('');
   $('#modal-content').html('');
   $('#modal').modal('hide');

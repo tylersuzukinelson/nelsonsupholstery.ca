@@ -5,7 +5,7 @@ $('#modal-flash-messages').html('');
 
   <% @category.errors.full_messages.each do |error| %>
 
-    $('#flash-messages').append('<div class="alert alert-danger"><%= error %></div>');
+    $('#modal-flash-messages').append('<div class="alert alert-danger"><%= error %></div>');
 
   <% end %>
 

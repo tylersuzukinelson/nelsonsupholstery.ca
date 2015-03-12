@@ -8,11 +8,16 @@ class ImagesController < ApplicationController
   end
 
   def new
-
+    @image = Image.new
   end
 
   def create
-
+    @image = Image.new image_params
+    if @image.save
+      redirect_to images_path
+    else
+      redirect_to images_path, alert: get_errors
+    end
   end
 
   def edit
@@ -34,7 +39,11 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:title, :description, :alt, :image)
+    params.require(:image).permit(:title, :description, :alt, { 'category_ids' => [] }, :image)
+  end
+
+  def get_errors
+    @image.errors.full_messages.join('; ')
   end
 
 end

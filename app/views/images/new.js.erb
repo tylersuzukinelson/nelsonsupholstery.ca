@@ -1,0 +1,18 @@
+$('#flash-messages').html('');
+$('#modal-flash-messages').html('');
+
+<% if @image.errors.any? %>
+
+  <% @image.errors.full_messages.each do |error| %>
+
+    $('#flash-messages').append('<div class="alert alert-danger"><%= error %></div>');
+
+  <% end %>
+
+<% else %>
+
+  $('#modal-title').text('Add New Image');
+  $('#modal-content').html('<%= j render partial: "/images/form", locals: { image: @image } %>');
+  $('#modal').modal('show');
+
+<% end %>
