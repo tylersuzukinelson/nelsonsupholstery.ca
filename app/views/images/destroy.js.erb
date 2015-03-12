@@ -1,0 +1,16 @@
+$('#flash-messages').html('');
+$('#modal-flash-messages').html('');
+
+<% if @image.errors.any? %>
+
+  <% @image.errors.full_messages.each do |error| %>
+
+    $('#flash-messages').append('<div class="alert alert-danger"><%= error %></div>');
+
+  <% end %>
+
+<% else %>
+
+  $('#<%= dom_id(@image) %>').remove();
+
+<% end %>

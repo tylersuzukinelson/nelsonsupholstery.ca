@@ -21,15 +21,18 @@ class ImagesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
+    if @image.update image_params
+      redirect_to images_path
+    else
+      redirect_to images_path, alert: get_errors
+    end
   end
 
   def destroy
-
+    @image.destroy
   end
 
   private
