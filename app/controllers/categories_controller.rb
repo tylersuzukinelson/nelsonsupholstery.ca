@@ -28,7 +28,10 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-
+    @category.destroy
+    respond_to do |format|
+      format.js { render }
+    end
   end
 
   private
