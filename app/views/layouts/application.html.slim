@@ -34,7 +34,7 @@ html
                         a href="#{category_path(category)}"
                           = category.title
             li
-              = link_to "Contact Us", contact_path
+              = link_to "Contact Us", mail_path
           ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
               li
