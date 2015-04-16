@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   root 'home#index'
-  get 'contact' => 'home#contact'
   get 'mail' => 'home#new_mail'
   post 'mail' => 'home#create_mail'
+  get 'about' => 'home#about'
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
   end

@@ -2,9 +2,15 @@ class HomeController < ApplicationController
 
   def index
     @images = Image.order(created_at: :desc)
+    @content = SiteContent.find_by_page("Home").content
+  end
+
+  def about
+    @content = SiteContent.find_by_page("About").content
   end
 
   def new_mail
+    @content = SiteContent.find_by_page("Contact").content
     render :new_mail
   end
 

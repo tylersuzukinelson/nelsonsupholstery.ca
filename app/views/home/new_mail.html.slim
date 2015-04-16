@@ -1,19 +1,17 @@
-h1 Contact Us
-p style="margin-left: 50px; "
-  | 604-940-2223
-p style="margin-left: 50px; "
-  | 4640 62 St
-  br
-  | Delta, BC &nbsp; V4K 3L7
-= form_tag mail_path, class: "form-horizontal"
-  .form-group
-    = label_tag :name, "Name: "
-    = text_field_tag :name, nil, required: true, class: "form-control"
-  .form-group
-    = label_tag :email, "E-mail: "
-    = email_field_tag :email, nil, required: true, class: "form-control"
-  .form-group
-    = label_tag :message, "Message: "
-    = text_area_tag :message, nil, required: true, class: "form-control"
-  .form-group
-    = submit_tag "Send Message", class: "btn btn-default"
+.row
+  h1 Contact Us
+.row
+  = @content.html_safe if @content
+.row
+  = form_tag mail_path, class: "form-horizontal"
+    .form-group
+      = label_tag :name, "Name: "
+      = text_field_tag :name, nil, required: true, class: "form-control"
+    .form-group
+      = label_tag :email, "E-mail: "
+      = email_field_tag :email, nil, required: true, class: "form-control"
+    .form-group
+      = label_tag :message, "Message: "
+      = text_area_tag :message, nil, required: true, class: "form-control"
+    .form-group
+      = submit_tag "Send Message", class: "btn btn-default"

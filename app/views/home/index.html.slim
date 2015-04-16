@@ -2,3 +2,5 @@
   h1
     | Nelson's Upholstery & Design
   = render partial: "/home/gallery", locals: { images: @images }
+.row
+  = @content.html_safe if @content
