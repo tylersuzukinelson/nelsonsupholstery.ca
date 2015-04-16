@@ -1,0 +1,5 @@
+h3
+  = site_content.page
+= simple_form_for site_content, class: "form-horizontal" do |f|
+  = f.input :content
+  = f.button :submit, "Save!", class: "btn btn-primary"

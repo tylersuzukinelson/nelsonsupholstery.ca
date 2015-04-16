@@ -13,5 +13,11 @@ Category.create([
     { title: 'Foam' }, 
     { title: 'Furniture' }, 
     { title: 'Marine' }, 
-    { title: 'RV' }, 
+    { title: 'RV' }
+  ])
+
+SiteContent.create([
+    { page: 'Home' },
+    { page: 'About' },
+    { page: 'Contact' }
   ])
