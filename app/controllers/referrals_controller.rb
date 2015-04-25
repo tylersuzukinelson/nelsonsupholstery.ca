@@ -14,14 +14,11 @@ class ReferralsController < ApplicationController
   def create
     @referral = Referral.new referral_params
     if @referral.save
-      redirect_to @referral
+      redirect_to referrals_path
     else
       flash[:alert] = get_errors
       render :new
     end
-  end
-
-  def show
   end
 
   def edit
@@ -29,7 +26,7 @@ class ReferralsController < ApplicationController
 
   def update
     if @referral.update referral_params
-      redirect_to @referral
+      redirect_to referrals_path
     else
       flash[:alert] = get_errors
       render :edit
@@ -40,7 +37,7 @@ class ReferralsController < ApplicationController
     if @referral.destroy
       redirect_to :index
     else
-      redirect_to @referral, alert: get_errors
+      redirect_to referrals_path, alert: get_errors
     end
   end
 
