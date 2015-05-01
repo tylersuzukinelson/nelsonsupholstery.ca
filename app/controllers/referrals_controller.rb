@@ -1,6 +1,6 @@
 class ReferralsController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :create]
   before_action :get_referral, only: [:update, :destroy]
 
   def index
