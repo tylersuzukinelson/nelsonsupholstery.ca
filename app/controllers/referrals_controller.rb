@@ -28,7 +28,7 @@ class ReferralsController < ApplicationController
   def update
     @referral.update approved: !@referral.approved
     respond_to do |format|
-      format.js { redirect_to referrals_path }
+      format.js { render }
     end
   end
 
