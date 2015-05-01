@@ -1,7 +1,7 @@
 class ReferralsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index]
-  before_action :get_referral, only: [:show, :edit, :update, :destroy]
+  before_action :get_referral, only: [:show, :update, :destroy]
 
   def index
     if user_signed_in?
@@ -25,15 +25,10 @@ class ReferralsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
-    if @referral.update referral_params
-      redirect_to referrals_path
-    else
-      flash[:alert] = get_errors
-      render :edit
+    @referral.update approved: !@referral.approved
+    respond_to do |format|
+      format.js { redirect_to referrals_path }
     end
   end
 
