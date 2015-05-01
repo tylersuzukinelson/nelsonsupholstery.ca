@@ -1,5 +1,9 @@
-.well id="form"
-  = render partial: "/referrals/form", locals: { referral: @referral }
+.well
+  div id="form"
+    = render partial: "/referrals/form", locals: { referral: @referral }
+  div id="show_button" style="display: none; "
+    button onclick="$('#form').toggle(); $('#show_button').toggle(); " class="btn btn-default"
+      | Add a Referral
 #referrals
   - @referrals.each do |referral|
     = render partial: "/referrals/list_item", locals: { referral: referral }

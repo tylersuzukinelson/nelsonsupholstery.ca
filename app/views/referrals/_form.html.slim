@@ -1,5 +1,7 @@
-= simple_form_for referral, class: "form-horizontal", remote: true do |f|
+= simple_form_for referral, class: "form-horizontal", html: { style: "display: inline; " }, remote: true do |f|
   = f.input :name
   = f.input :email
   = f.input :body
   = f.submit class: "btn btn-default"
+button onclick="$('#form').toggle(); $('#show_button').toggle(); " class="btn btn-default"
+  | Hide Form
