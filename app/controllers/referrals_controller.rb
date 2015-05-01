@@ -33,10 +33,9 @@ class ReferralsController < ApplicationController
   end
 
   def destroy
-    if @referral.destroy
-      redirect_to :index
-    else
-      redirect_to referrals_path, alert: get_errors
+    @referral.destroy
+    respond_to do |format|
+      format.js { render }
     end
   end
 
