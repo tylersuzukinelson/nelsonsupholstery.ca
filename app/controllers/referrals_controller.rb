@@ -4,7 +4,11 @@ class ReferralsController < ApplicationController
   before_action :get_referral, only: [:show, :edit, :update, :destroy]
 
   def index
-    @referrals = Referral.order(created_at: :desc)
+    if user_signed_in?
+      @referrals = Referral.order(created_at: :desc)
+    else
+      @referrals = Referral.where(approved: true).order(created_at: :desc)
+    end
   end
 
   def new
