@@ -1,0 +1,10 @@
+$('#flash-messages').html('');
+<% if @referral.errors.any? %>
+  $('#flash-messages').html('<%= @referral.errors.full_messages.join(', ') %>');
+<% else %>
+  $('#form').html('<%= j render partial: "/referrals/form", locals: { referral: Referral.new } %>');
+  $('<%= j render partial: "/referrals/list_item", locals: { referral: @referral } %>').prependTo('#referrals').hide().fadeIn('slow');
+  <% unless user_signed_in? %>
+    $('#<%= dom_id(@referral) %>').prepend('<em>Your referral has been received. It will be added to the website upon approval by a site administrator.</em><br><br>');
+  <% end %>
+<% end %>

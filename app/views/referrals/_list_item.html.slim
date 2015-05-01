@@ -1,6 +1,13 @@
-.well
-  strong
-    a href="mailto:#{referral.email}"
-      = referral.name
-  br
+.well id="#{dom_id(referral)}"
+  div
+    strong
+      a href="mailto:#{referral.email}"
+        = referral.name
+    div style="float: right; "
+      - if user_signed_in?
+        - if referral.approved
+          = link_to "unapprove", referral, class: "btn btn-warning btn-xs", remote: true, method: "patch"
+        - else
+          = link_to "approve", referral, class: "btn btn-success btn-xs", remote: true, method: "patch"
+        = link_to "delete", referral, class: "btn btn-danger btn-xs", remote: true, method: "delete"
   = referral.body

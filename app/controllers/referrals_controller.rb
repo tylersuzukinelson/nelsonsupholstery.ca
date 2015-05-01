@@ -1,43 +1,36 @@
 class ReferralsController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index]
-  before_action :get_referral, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :create]
+  before_action :get_referral, only: [:update, :destroy]
 
   def index
-    @referrals = Referral.order(created_at: :desc)
-  end
-
-  def new
     @referral = Referral.new
+    if user_signed_in?
+      @referrals = Referral.order(created_at: :desc)
+    else
+      @referrals = Referral.where(approved: true).order(created_at: :desc)
+    end
   end
 
   def create
     @referral = Referral.new referral_params
-    if @referral.save
-      redirect_to referrals_path
-    else
-      flash[:alert] = get_errors
-      render :new
+    @referral.save
+    respond_to do |format|
+      format.js { render }
     end
   end
 
-  def edit
-  end
-
   def update
-    if @referral.update referral_params
-      redirect_to referrals_path
-    else
-      flash[:alert] = get_errors
-      render :edit
+    @referral.update approved: !@referral.approved
+    respond_to do |format|
+      format.js { render }
     end
   end
 
   def destroy
-    if @referral.destroy
-      redirect_to :index
-    else
-      redirect_to referrals_path, alert: get_errors
+    @referral.destroy
+    respond_to do |format|
+      format.js { render }
     end
   end
 

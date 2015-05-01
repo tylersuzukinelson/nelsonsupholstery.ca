@@ -1,0 +1,6 @@
+$('#flash-messages').html('');
+<% if @referral.errors.any? %>
+  $('#flash-messages').html('<%= @referral.errors.full_messages.join(', ') %>');
+<% else %>
+  $('#<%= dom_id(@referral) %>').replaceWith('<%= j render partial: "list_item", locals: { referral: @referral } %>');
+<% end %>
