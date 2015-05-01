@@ -4,6 +4,7 @@ class ReferralsController < ApplicationController
   before_action :get_referral, only: [:show, :update, :destroy]
 
   def index
+    @referral = Referral.new
     if user_signed_in?
       @referrals = Referral.order(created_at: :desc)
     else
@@ -11,17 +12,11 @@ class ReferralsController < ApplicationController
     end
   end
 
-  def new
-    @referral = Referral.new
-  end
-
   def create
     @referral = Referral.new referral_params
-    if @referral.save
-      redirect_to referrals_path
-    else
-      flash[:alert] = get_errors
-      render :new
+    @referral.save
+    respond_to do |format|
+      format.js { render }
     end
   end
 

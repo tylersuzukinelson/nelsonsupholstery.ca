@@ -1,0 +1,7 @@
+$('#flash-messages').html('');
+<% if @referral.errors.any? %>
+  $('#flash-messages').html('<%= @referral.errors.full_messages.join(', ') %>');
+<% else %>
+  $('#form').html('<%= j render partial: "/referrals/form", locals: { referral: Referral.new } %>');
+  $('<%= j render partial: "/referrals/list_item", locals: { referral: @referral } %>').prependTo('#referrals').hide().fadeIn('slow');
+<% end %>
